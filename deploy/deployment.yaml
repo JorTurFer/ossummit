@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ossumit-demo
+  labels:
+    app: ossumit-demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ossumit-demo
+  template:
+    metadata:
+      labels:
+        app: ossumit-demo
+    spec:
+      containers:
+        - name: ossumit-demo
+          image: ghcr.io/jorturfer/ossummit:main
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always

@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ossumit-demo
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - demo.ossummit.fixedbuffer.com
+      secretName: acme-cert
+  rules:
+    - host: demo.ossummit.fixedbuffer.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ossumit-demo
+                port:
+                  number: 80
