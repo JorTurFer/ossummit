@@ -19,7 +19,7 @@ func main() {
 }
 
 func handleRoot(w http.ResponseWriter, r *http.Request) {
-	fileBytes, err := os.ReadFile("./assets/picture.jpg")
+	fileBytes, err := os.ReadFile("./assets/picture-2025.png")
 	if err != nil {
 		panic(err)
 	}
